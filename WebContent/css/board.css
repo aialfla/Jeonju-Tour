@@ -1,0 +1,1117 @@
+@charset "utf-8";
+@import "../fonts/fonts.css";
+
+
+/* main 메인페이지 ======================================================= */
+#main.main_bg {
+	background-image: url(../img/bg_maincon.png), url(../img/bg_main.jpg);
+	background-size: 1000px, auto;
+	background-position: 980px -75px, 0 -80px;
+	background-repeat: no-repeat;
+}
+#main .main_warp {padding-top: 140px;}
+#main .main_warp .main_title {margin-bottom: 30px;}
+
+/* 태그 */
+.main_tag ul li {
+	display: flex;
+	margin-bottom: 15px;
+}
+.main_tag .checkbox_title {
+	height: 40px;
+	padding: 0 24px;
+	margin-right: 10px;
+	font-size: 15px;
+	font-weight: 600;
+	text-align: center;
+	line-height: 34px;
+	color: #745151;
+	border: 3px solid #9c897d;
+	border-radius: 20px;
+}
+
+.main_tag .c-checkbox {
+	position: relative;
+	display: inline-block;
+	margin-right: 8px;
+	vertical-align: middle;
+}
+
+.main_tag .c-checkbox_input {
+	display: inline-block;
+	opacity: 0;
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 12px;
+	height: 12px;
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+
+.main_tag .c-checkbox_label::before {content: '#';}
+.main_tag .c-checkbox_label {
+	display: inline-block;
+	height: 40px;
+	line-height: 38px;
+	padding: 0 24px;
+	background: #e3d7cc;
+	border-radius: 25px;
+	font-size: 15px;
+	text-align: center;
+	color: #5a3c3c;
+	cursor: pointer;
+}
+
+.main_tag .c-checkbox_input:checked~.c-checkbox_label {
+	background-color: #8c6161;
+	color: #fff;
+	box-shadow: 2px 2px 5px 0 rgba(140,97,97,.3);
+	transition:all 0.1s ease; -webkit-transition:all 0.1s ease;
+}
+
+.main_warp .btn_sumit button {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background-color: #cd5c5c;
+	opacity: .8;
+	margin-top: 5px;
+}
+.main_tag .btn_sumit button:hover {
+	opacity: 1;
+	transition:all 0.4s ease; -webkit-transition:all 0.4s ease;
+}
+.main_warp .btn_sumit button i {
+	font-size: 27px;
+	color: #fff;
+	position: relative;
+	top: 2px;
+}
+
+#main .guide {
+	position: absolute;
+	right: 50px;
+	bottom: 50px;
+	text-align: right;
+}
+#main .guide img {
+	padding-right: 60px;
+}
+#main .guide a {
+	position: absolute;
+	right: 0;
+	top: 8px;
+	text-align: center;
+	display: inline-block;
+	width: 54px;
+	height: 54px;
+	line-height: 54px;
+	border-radius: 50%;
+	background-color: #2a747f;
+	font-size: 27px;
+	color: #fff;
+	box-shadow: 2px 2px 5px 0 rgba(42,116,127,.3);
+}
+
+
+
+/* list_tour 추천 관광지 목록 ===================================================================================== */
+/* 메뉴(관광지/음식점/숙소) -------------------------*/
+.depth03 {
+	position: absolute; top: 0px; left: 0px;
+	display: block; z-index: 100;
+	width: 390px; padding: 0 25px;
+	background: #fff; border-bottom: 1px solid #ddd;
+}
+.depth03 ul { font-size: 0; }
+.depth03 ul li {
+	position: relative; display: inline-block;
+	width: 32%; margin-right: 2%; border-radius: 10px;
+	font-size: 14px; font-weight: 400; color: #745151; 
+	text-align: center;
+}
+.depth03 ul li:last-child { margin-right: 0;}
+.depth03 ul li a { width: 100%; padding: 15px; display: inline-block;}
+.depth03 ul li.on { color: #462f2f; font-weight: 600;}
+.depth03 ul li.on::after {
+	content: ''; position: absolute; left: 0; bottom: 0;
+	width: 100%; height: 2px; background: #462f2f;
+}
+.depth03 ul li:hover { color:#462f2f;}
+
+
+/* 관광지 리스트 ------------------------------------*/
+.tourlist_container {
+	position: absolute; top: 0px; bottom: 0px;
+	z-index: 200; height: 100%; min-width: 390px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 5px 0px 15px 0px;
+}
+.tourlist_wrap {
+	position: relative; height: 100%;
+	display: flex; flex: 1 1 auto;
+	overflow: hidden;
+}
+.list_group {
+	position: relative; width: 390px; z-index: 20;
+	display: flex; flex: 0 0 auto; flex-direction: column;
+	margin-top: 50px; overflow-y: scroll;
+	background-color: #fdfdfd;
+	border-right: 1px solid rgb(221, 221, 221);
+}
+
+.list_group>ul li { position: relative; border-top: 1px solid rgb(221, 221, 221);}
+.list_group ul li .list_click {cursor: pointer;}
+.list_group ul li .list_con {padding: 20px 25px;}
+/* .list_group ul li.list_click:hover {background: #efefef;} */
+.list_group ul li .list_con dl { position: relative; margin-bottom: 10px;}
+.list_group ul li .list_con dl dt { 
+	font-size: 20px; font-weight: 600; 
+	color: #111; line-height: 1.2; margin-bottom: 2px;
+}
+.list_group ul li .list_con dl dd { font-size: 15px; font-weight: 300;}
+.list_group ul li .list_con dl .list_put {
+	position: absolute; top: 4px; right: 0;
+	width: 36px; height: 36px; z-index: 50;
+}
+.list_group ul li .list_put { font-size: 32px; color: #ccc; position: absolute;
+    top: 17px;
+    right: 24px;}
+.list_group ul li .list_put:hover { color: #cd5c5c;}
+.list_group ul li .list_put.on { color: #cd5c5c;}
+.list_group ul li .list_tag { margin-top: 8px;} 
+.list_group ul li .list_tag li { 
+	display: inline-block; margin-right: 5px; padding: 3px 12px;
+	font-size: 12px; 
+	background-color: #eee; border-radius: 20px;} 
+.list_group ul li .list_img { width: 100%; height: 190px; overflow: hidden; border-radius: 10px; margin-top: 10px;}
+
+/* 스크롤바 */
+.list_group::-webkit-scrollbar { width: 6px;}
+.list_group::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 10px; }
+.list_group::-webkit-scrollbar-track { width: 6px; background-color: #eee;}
+
+
+/* 관광지 리스트 자세히보기 ------------------------------------------------------ */
+.more_group.on {display: flex;}
+.more_group {
+	position: relative;
+	display: none; width: 390px; height: 100%;
+	flex: 0 0 auto; flex-direction: column;
+	box-sizing: content-box; z-index: 10; overflow-y: auto;
+	background: #fff;
+}
+
+/* 스크롤바 */
+.more_group::-webkit-scrollbar { width: 6px;}
+.more_group::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 10px; }
+.more_group::-webkit-scrollbar-track { width: 6px; background-color: #eee;}
+
+/* 닫기 버튼 */
+.more_group .btn_close button {
+	position: absolute; top: 10px; right: 10px; 
+	display: inline-block; width: 40px; height: 40px; font-size: 20px;
+	border-radius: 50%; background: #fff;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 5px 0px;
+}
+.more_group .btn_close button i {font-size: 24px; line-height: 1.9; color: #888;}
+
+/* 타이틀 */
+.more_list { background-color: #eee;}
+.more_list>li { background-color: #fff; margin-bottom: 10px; padding: 20px 25px;}
+.more_list li:last-child { margin: 0;}
+.more_list .more_img { width: 100%; height: 210px; overflow: hidden;}
+.more_list .more_tit { text-align: center;}
+.more_list .more_tit dl dt {font-size: 24px; font-weight: 600; color: #111;}
+.more_list .more_tit dl dd {font-size: 15px;}
+.more_list .more_tit dl .more_btn { margin-top: 15px;}
+.more_list .more_tit dl .more_btn button, .more_list .more_tit dl .more_btn a {
+	display: inline-block; width: 110px; height: 40px; 
+	padding: 8px 0; border-radius: 30px; font-size: 14px;
+	line-height: 1; vertical-align: top;
+}
+.more_list .more_tit dl .more_btn button {
+	line-height: 1.25;
+}
+.more_list .more_tit dl .more_btn .btn_review {
+	border: 2px solid #2a747f; color: #2a747f; margin-right: 10px;
+}
+.more_list .more_tit dl .more_btn .btn_put { 
+	background-color: #888; color: #fff;
+}
+.more_list .more_tit dl .more_btn button span {vertical-align: text-top;}
+
+.more_list .more_tit dl .more_btn button.btn_put.on { 
+	background-color: #d74545; color: #fff;
+}
+.more_list .more_tit dl .more_btn button.btn_put:hover {
+	background-color: #d74545; transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+}
+
+/* 정보 */
+.more_list .more_con dl {display: flex;}
+.more_list .more_con dl dt {flex: 0 1 20px;}
+.more_list .more_con dl dd {
+	display: inline-block; width: calc(100% - 25px);
+	font-size: 15px; color: #555;
+}
+.more_list .more_con ul li i {color: #aa9d9d; margin-right: 8px; top: 3px;}
+
+/* 리뷰 */
+.more_list .review_box {padding-top: 0;}
+.more_list .review_list li {
+	padding: 10px 0 20px 45px; position: relative;
+	background: url(../img/icon_review.png) no-repeat left 22px; 
+	border-top: 1px solid #ddd;
+}
+.more_list .review_list li:first-child {border: none;}
+
+.more_list .review_box .noreview {
+	background: none; padding: 0; min-height: 250px;
+/* 	display: flex; justify-content: center; */
+	background: url(../img/noreview.png) no-repeat center;
+}
+
+.more_list .review_list .rcon {
+	min-height: 40px; color: #555; font-size: 15px; margin-top: 10px;
+} 
+.more_list .review_list .rfoot {
+	position: relative; margin-top: 12px; 
+	font-size: 16px; font-weight: 600;
+	color: #745151; line-height: 1;
+}
+.more_list .review_list .rtime {font-size: 13px; color: #9f8e8e;}
+.more_list .review_list .btn_rdel,
+.more_list .review_list .btn_rdel2 {
+	position: absolute; top: 21px; right: 0;
+	display: inline-block; color: #8f7676;
+	text-align: center; font-size: 24px; line-height: 1;
+}
+
+.more_list .review_write {
+	position: absolute; left: 0; padding: 20px 25px;
+	width: 100%; height: 180px; 
+	background: #eee; 
+	}
+.more_list .review_write #rwrite {
+	width: 100%; height: 100px; padding: 8px 10px; 
+	border-radius: 5px; border: 1px solid #ddd; 
+	vertical-align: top; resize: none;
+	}
+.more_list .review_write div { text-align: right;}
+.more_list .review_write .btn_rOK {
+	margin-top: 8px; padding: 8px 20px;
+	background: #462f2f; color: #fff; 
+	border-radius: 10px; font-weight: 300; 
+}
+
+
+
+/* 지도영역 ------------------*/
+.map_wrap{
+	height:100%; position:relative; overflow:hidden;
+}
+.main_full .map_wrap{
+	width: calc(100% - 389px); float: right;
+}
+.map_wrap .map {
+	width:100%; height:100%;
+	background-size: cover;
+}
+
+/* 일정만들기 버튼 */
+.main_full .btn_write {position: absolute; top: 20px; right: 50px; z-index: 500;}
+.btn_write button {
+	padding: 10px 20px; border-radius: 22px; 
+	background: #462f2f; color: #fff; font-size: 15px;
+}
+
+
+
+
+/* board_course 추천 일정 */
+.sort_list {
+	margin-bottom: 10px;
+	text-align: right;
+}
+
+.sort_list ul li {
+	display: inline-block;
+	position: relative; padding: 0 8px
+}
+
+.sort_list ul li.on {
+	font-weight: 500; color: #332828;
+}
+.sort_list ul li:last-child {padding-right: 0;}
+.sort_list ul li:last-child:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 1px;
+    height: 13px;
+    background-color: #beb6b6;
+}
+
+.bcourse_list::after {content: ""; display: block; clear: both;}
+.bcourse_list>li {
+	position: relative; float: left;
+	width: 32%; height: 320px;
+	margin-right: 2%; margin-bottom: 30px;
+	background: #fff; box-shadow: 3px 3px 8px 0px rgba(51, 51, 51, 0.2);
+	border-radius: 10px; text-align: center;
+}
+.bcourse_list>li:nth-child(3n) {margin-right: 0;}
+.bcourse_list>li:nth-child(3n):after {content: ""; display: block; clear: both;}
+.bcourse_list>li>a { display: inline-block; width: 100%; height: 100%;}
+.bcourse_warp ul li .list_img {
+	display: block;
+	height: 210px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 10px 10px 0 0;
+}
+
+.bcourse_warp ul li strong {
+	margin: 20px 0 20px 0; color: #111; 
+	font-size: 20px; font-weight: 500; text-align: center;
+	line-height: 20px; letter-spacing: -0.5px;
+	overflow: hidden; text-overflow: ellipsis;
+	white-space: normal; word-break: keep-all;
+	display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+}
+
+.bcourse_list li .address {
+	font-size: 15px; color: #745151;
+}
+
+.bcourse_list .list_tag { margin-top: 8px; text-align: center;} 
+.bcourse_list .list_tag li { 
+	display: inline-block; margin-right: 2px; 
+	color: #745151; border: 1px solid #b5a0a0;
+	border-radius: 20px; padding: 2px 10px;
+} 
+.bcourse_list .list_tag li:last-child {margin-right: 0;}
+.bcourse_list .list_tag li::before {content: '#';}
+
+.bcourse_list li:hover .btn_del {
+	display: inline-block;
+}
+.bcourse_list .btn_del {
+	position: absolute; top: 10px; right: 10px; text-align: center;
+	display: none; width: 40px; height: 40px; font-size: 20px;
+	border-radius: 50%; background: #fff;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 5px 0px;	
+}
+.bcourse_list .btn_del i {
+	font-size: 24px; line-height: 1.9; color: #888;}
+	
+
+.bcourse_list .btn_like {
+	position: absolute; left: 12px; top: 12px; z-index: 10;
+}
+.bcourse_list .btn_like button {
+	height: 30px; padding: 3px 12px 3px 3px;
+	background: #fff; border-radius: 20px;
+	color: #3d6a71; font-size: 13px; text-align: left;
+}
+.bcourse_list .btn_like i {
+	position: relative; display: inline-block; 
+	width: 24px; height: 24px; margin-right: 3px; padding-top: 4px;
+	background: #4e8891; border-radius: 50%;
+	color: #fff; text-align: center; vertical-align: top;
+}
+.bcourse_list .btn_like:hover i {background: #d74545;}
+.bcourse_list .btn_like:hover button {color: #d74545;}
+.bcourse_list .btn_like.on button i {background: #d74545;}
+.bcourse_list .btn_like.on button {color: #d74545;}
+.bcourse_list .btn_like .txt { line-height: 1.8;}
+.bcourse_list .btn_like .likecount {margin-left: 2px; vertical-align: top; line-height: 1.8;}
+
+/* 일정 더보기 버튼 */
+#main h4.sub_tit {
+	display: inline-block;
+	font-family:'Jalnan'; text-align: left; font-size: 24px;
+	color: #332828; line-height: 1;
+}
+#main h4.sub_tit::before {
+	content: url(../img/icon_mark.png);
+	margin-right: 5px;
+}
+
+.sub_titbox {
+	position: relative;
+	margin-bottom: 15px;
+}
+
+
+.btn_more {
+	position: absolute; right: 0; bottom: 0;
+	padding: 8px 24px; border-radius: 10px;  
+	background: #745151; color: #fff; font-size: 13px;
+}
+
+/* 나의 리뷰 */
+.bcourse_review>li {
+	height: 200px;
+	padding: 30px; margin-bottom: 30px;
+	text-align: left;
+}
+
+.bcourse_review li .txt {
+	width: 100%; height: 92px; font-size: 16px;
+	overflow: hidden; text-overflow: ellipsis;
+	white-space: normal; word-break: keep-all;
+	display: -webkit-box;
+	-webkit-line-clamp: 4; -webkit-box-orient: vertical;
+	margin-bottom: 30px; color: #111;
+}
+
+.bcourse_review li .review_info {
+	vertical-align: bottom;
+}
+.bcourse_review li .review_info .place {
+	display: inline-block; color: #333;
+}
+.bcourse_review li .review_info .date {
+	display: inline-block; float: right;
+}
+
+/* view_mypage */
+.view_mypage .more_group {
+	float: left; height: 800px;
+}
+.view_mypage .map_wrap {
+	height: 800px;
+}
+
+
+/* 회원가입 및 로그인 ======================================= */
+.input_wrap {
+	width: 540px; margin: 0 auto; padding: 50px 60px;
+	background-color: #fff; border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.input_wrap .input_list {margin-bottom: 30px;}
+.input_wrap .input_list li {margin-bottom: 20px; font-size: 0;}
+.input_wrap .input_list li label { 
+	display: block; color: #333; font-size: 14px;
+}
+.input_wrap .input_list li input {
+	width: 100%; padding: 12px; margin-top: 3px;
+	font-size: 14px;
+	border-radius: 5px; border: 1px solid #ccc;
+}
+.input_wrap .input_list li .joinID {
+	width: calc(100% - 63px); margin-right: 3px;
+}
+.input_wrap .input_list li .btn_check {
+	width: 60px; padding: 12px;
+	border-radius: 5px; font-size: 14px;
+	background: #462f2f; color: #fff; font-weight: 300;
+}
+
+.input_wrap .btn_list li {margin-bottom: 10px;}
+.input_wrap .btn_list button {
+	display: block; width: 100%;
+	padding: 12px; border-radius: 5px;
+	background-color: #d74545; color: #fff;
+	text-align: center; font-size: 15px;
+}
+
+.input_wrap .btn_list .btn_kakao button {
+	background: #ffe600; color: #392020;
+}
+
+.input_wrap .link_list {
+	text-align: right; margin-top: 0px;
+}
+.input_wrap .link_list li {
+/* 	position: relative; display: inline-block; */
+/* 	padding-right: 17px; margin-right: 12px; */
+	color: #888;
+}
+
+.input_wrap .link_list li i {
+	position: relative; top: 2px;
+}
+
+/* .input_wrap .link_list li:last-child { */
+/* 	margin-right: 0; padding-right: 0; */
+/* } */
+
+/* .input_wrap .link_list li::after { */
+/* 	content: ''; */
+/* 	position: absolute; */
+/* 	right: 0; */
+/* 	top: 7px; */
+/* 	width: 1px; */
+/* 	height: 13px; */
+/* 	background-color: #e0e0e0; */
+/* } */
+
+
+
+/* write_course 일정계획 ============================================= */
+.tourcouse_wrap section {
+	position: relative;
+	float: left;
+}
+
+/* 기본 입력정보 */
+.tourcouse_wrap .info_group {
+	width: 390px; height: 490px;
+	padding: 20px 25px;
+	background: #fff;
+	border-left: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
+.info_list {margin-bottom: 20px;}
+.info_list>li {margin-bottom: 15px; font-size: 0;}
+.info_list li:last-child {margin-bottom: 0;}
+.info_list li label { 
+	display: block; color: #333; font-size: 14px;
+}
+.info_list li input, .info_list li select, .info_list li textarea {
+	padding: 8px; margin-top: 3px;
+	font-size: 14px;
+	border-radius: 5px; border: 1px solid #ccc;
+}
+.info_list li textarea {
+	width: 100%; height: 115px; resize: none;
+	padding: 4px 8px; line-height: 1.3;
+}
+.info_list li.info_two div {
+	float: left; width: 30%;	
+}
+.info_list li.info_two div {
+	margin-right: 5%;
+}
+.info_list li.info_two div:last-child {
+	margin-right: 0;
+}
+.info_list li span {
+	display: inline-block; width: 6%; 
+	font-size: 20px; color: #ccc; text-align: center;
+}
+.info_list li select { font-size: 14px; }
+.info_list li.info_radio ul {margin-top: 5px;}
+.info_list li.info_radio ul li {
+	display: inline-block; margin-right: 20px;
+}
+.info_list li.info_radio ul li label {
+	display: inline-block; margin-left: 5px;
+}
+
+.btn_board { text-align: center; margin-top: 40px;}
+.btn_board li { display: inline-block; margin-right: 10px; }
+.btn_board li:last-child { margin-right: 0;}
+.btn_board a, 
+.btn_board button {
+	display: inline-block;
+	width: 100px;
+	padding: 10px; border-radius: 10px; 
+	vertical-align: top;
+}
+
+.btn_board .btn_secound {
+	border: 1px solid #745151;
+	color: #745151; background: #fff;
+}
+
+.btn_board .btn_primary {
+	background: #d74545;
+	color: #fff;
+}
+
+.btn_board .btn_third {
+	background: #745151;
+	color: #fff;
+}
+
+.btn_board .btn_like {
+	background: #888; border:1px solid #888;
+	color: #fff;
+	transition:all 0.4s ease; -webkit-transition:all 0.4s ease;
+}
+.btn_board .btn_like:hover {
+	background: #d74545; border:1px solid #d74545;
+}
+.btn_board .btn_like i {
+	position: relative; top: 2px;
+	margin-right: 3px;
+}
+.btn_board .btn_like.on {
+	background: #d74545; border:1px solid #d74545;
+}
+
+/* 지도 */
+.tourcouse_wrap .map_group {
+	width: 810px; height: 490px;
+	border-top: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	background: #eee;
+}
+.tourcouse_wrap .map_group .map {
+	width:100%;height:100%;position:relative;overflow:hidden;
+	background: url(../img/map.jpg) no-repeat; background-size: cover;
+}
+
+
+/* 관광지 목록 */
+.tourcouse_wrap .tourcon_group {
+	width: 390px;
+	position: relative;
+}
+.tourcon_group .tourcon_top {
+	padding: 15px 25px 14px;
+	background: #594646;
+	border-right: 1px solid #ddd;
+}
+.tourcon_group .tourcon_top .search_group {
+	width: 100%; height: 48px; border-radius: 10px;
+	background: #fff; overflow: hidden;
+}
+.tourcon_group .tourcon_top .search_group .input_sc {
+	width: 85%; padding: 14px; float: left;
+	border: none; 
+}
+.tourcon_group .tourcon_top .search_group .btn_sc {
+	width: 15%; height: 100%; border: none; 
+	background: url(../img/icon_search.png) no-repeat center;
+}
+
+
+.depth02 {
+	position: relative;
+}
+.depth02 ul { font-size: 0; }
+.depth02 ul li {
+	display: inline-block;
+	width: 48%;
+	margin-right: 2%;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 400;
+	color: #e4e2e2;
+	text-align: center;
+}
+.depth02 ul li:last-child { margin-right: 0;}
+.depth02 ul li a { 
+	display: inline-block; width: 100%;
+	padding: 10px; border-radius: 10px;
+}
+.depth02 ul li.on { 
+	font-weight: 500;
+	background: #462f2f; color: #fff;
+}
+.depth02 ul li:hover { 
+	background: #462f2f; color:#fff; 
+	transition:all 0.4s ease; -webkit-transition:all 0.4s ease;
+}
+
+.tourcon_group .depth03 { 
+	position: relative;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	background: #fff;
+}
+.depth03 ul { font-size: 0; }
+.depth03 ul li {
+	position: relative; display: inline-block;
+	width: 32%; margin-right: 2%; border-radius: 10px;
+	font-size: 14px; font-weight: 400; color: #745151; 
+	text-align: center;
+}
+.depth03 ul li:last-child { margin-right: 0;}
+.depth03 ul li button { width: 100%; padding: 15px;}
+.depth03 ul li.on { color: #462f2f; font-weight: 600;}
+.depth03 ul li.on::after {
+	content: ''; position: absolute; left: 0; bottom: 0;
+	width: 100%; height: 2px; background: #462f2f;
+}
+.depth03 ul li:hover { color:#462f2f;}
+
+.tourcon_group .list_group {
+	top: -1px; height: 873px; 
+	margin-top: 0; overflow-y: scroll;
+	border: 1px solid #ddd; background: #fff;
+}
+
+
+
+
+/* 일정 계획표 */
+.tourcouse_wrap .tourplan_group {
+	width: 810px; height: 994px; position: relative;
+	border-bottom: 1px solid #ddd; border-right: 1px solid #ddd;
+	overflow: hidden;
+}
+
+.tourplan_group .btn_controll {
+	position: relative;
+}
+.tourplan_group .btn_controll button {
+	width: 50px; height: 70px; font-size: 20px; 
+	position: absolute; top: 0; z-index: 100;
+	color: #fff;
+}
+.tourplan_group .btn_controll button.btn_next {
+	right: 0;
+}
+
+.tourplan_group .tourplan_box {
+	position: relative;
+}
+.tourplan_list>li {
+	width: 404.5px; height: 100%; float: left;
+	border-left: 1px solid #ddd; background-color: #f8f4f3;
+}
+.tourplan_list>li:first-child {
+	border: none;
+}
+.tourplan_list li.on {
+	background-color: #fff!important;
+}
+.tourplan_list li.on .tourplan_day .btn_day {
+	opacity: 1;
+}
+
+.tourplan_list li .tourplan_day {
+	width: 100%; height: 70px; text-align: center;
+	background: #594646; line-height: 70px;
+}
+
+.view_tour .tourplan_list li .tourplan_day {
+	width: 390px;
+}
+
+.tourplan_list li .tourplan_day .btn_day {
+	padding: 0 120px; opacity: 0.85;
+}
+.tourplan_list li .tourplan_day .btn_day:hover {
+	opacity: 1;
+}
+
+.tourplan_list li .tourplan_day strong {
+	font-family: 'Jalnan'; color: #fff; 
+	font-size: 20px;
+}
+
+.tourplan_list li .tourplan_con {
+	position: relative; height: 924px; 
+	overflow-y: auto; padding-top: 15px;
+}
+
+/* 스크롤바 */
+.tourplan_list li .tourplan_con::-webkit-scrollbar { width: 6px;}
+.tourplan_list li .tourplan_con::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 10px; }
+.tourplan_list li .tourplan_con::-webkit-scrollbar-track { width: 6px; background-color: #eee;}
+
+.tourplan_list li.nodate {
+	background: url(../img/nodate.png) no-repeat center #f8f4f3;
+}
+
+.tourplan_list li.noplan {
+	background: url(../img/noplan.png) no-repeat center #f8f4f3;
+}
+
+
+.tourplan_list li .tourplan_con .tour_box {
+	padding: 0 20px 20px; display: flex;
+	background: url(../img/line.png) no-repeat 39px bottom;
+}
+.tourplan_list li .tourplan_con .tnum {
+	width: 40px; height: 40px; margin-right: 24px;
+	border-radius: 50%;
+	font-size: 16px; font-weight: 500;
+	text-align: center; line-height: 38px;
+	color: #fff; background: #cd5c5c;
+}
+
+.tourplan_list li .tourplan_con>ul>li:nth-child(2n) .tnum {
+	background: #eda825!important;
+}
+
+.tourplan_list li .tourplan_con>ul>li:nth-child(3n) .tnum {
+	background: #479b76!important;
+}
+.tourplan_list li .tourplan_con>ul>li:nth-child(4n) .tnum {
+	background: #257e88!important;
+}
+
+.tourplan_list li .tourplan_con .tname {
+	height: 40px; line-height: 37px;
+	font-size: 16px; color: #111;
+}
+
+.tourplan_list li .tourplan_con ul li {
+	position: relative;
+}
+.tourplan_list li .tourplan_con .btn_list {
+	position: absolute; right: 10px;
+}
+.tourplan_list li .tourplan_con .btn_list::after {
+	content: ' '; display: block; clear: both;
+}
+.tourplan_list li .tourplan_con .btn_list li {
+	display: inline-block;
+	float: left; margin-left: 2px;
+}
+.tourplan_list li .tourplan_con .btn_list li button {
+	width: 36px; height: 36px;
+}
+.tourplan_list li .tourplan_con .btn_list li button i {
+	font-size: 16px;
+	color: #888;
+}
+.tourplan_list li .tourplan_con .btn_list li button .icon_map {
+	font-size: 13px;
+}
+.tourplan_list li .tourplan_con .btn_list li button:hover i {
+	color: #333;
+}
+
+
+.tourplan_list li .tourplan_con .move_box {
+	padding: 2px 16px 20px;
+	background: url(../img/line.png) no-repeat 39px bottom;
+	display: flex;
+}
+.tourplan_list li .tourplan_con>ul>li:last-child li:last-child {
+	background: none!important;
+}
+
+.tourplan_list li .tourplan_con .tmove {
+	width: 60px; height: 40px; 
+	margin-right: 10px;
+	background: #fff;
+}
+.tourplan_list li .tourplan_con .tmove select {
+	width: 60px; padding: 5px 0; border: none; 
+	font-size: 15px; font-weight: 500; color: #333;
+	letter-spacing: -1px; text-align: center;
+}
+
+.tourplan_list li .tourplan_con .ttxt {
+	line-height: 33px;
+}
+.tourplan_list li .tourplan_con .ttxt span {
+	position: relative; display: inline-block;
+	color: #333;
+}
+
+.tourplan_list li .tourplan_con .ttxt .time {
+	padding-right: 10px; margin-right: 5px;
+}
+
+.tourplan_list li .tourplan_con .ttxt .time::after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 5px;
+	width: 1px;
+	height: 13px;
+	background-color: #e0e0e0;
+}
+
+.tourplan_list li .tourplan_con .ttxt .dis {
+	color: #555;
+}
+
+
+/* view_course 일정 상세페이지 ===================================== */
+.view_tour {
+	position: relative;
+}
+.view_tour .tourplan_group {
+	width: 390px; min-height: 500px;
+	border: 1px solid #ddd;
+}
+.view_tour .tourplan_list>li {
+	min-height: 800px; background-color: #fff;
+}
+
+.view_tour .tourplan_list>li {
+	width: 390px;
+	border: none;
+}
+
+.view_tour .tourplan_list li .tourplan_con .move_box {
+	padding-left: 20px;
+}
+.view_tour .tourplan_list li .tourplan_con .tmove span {
+	display: block; width: 40px; padding-top: 19px;
+	letter-spacing: -1px; text-align: center;
+	transition: none;
+}
+
+.view_tour .tourplan_list li .tourplan_con .tmove .move_bus {
+	background: url(../img/icon_bus.png) no-repeat center top;
+}
+.view_tour .tourplan_list li .tourplan_con .tmove .move_car {
+	background: url(../img/icon_car.png) no-repeat center top;
+}
+.view_tour .tourplan_list li .tourplan_con .tmove .move_bycle {
+	background: url(../img/icon_bycle.png) no-repeat center top;
+}
+.view_tour .tourplan_list li .tourplan_con .tmove .move_walk {
+	background: url(../img/icon_walk.png) no-repeat center top;
+}
+
+
+.view_tour .info_group {
+	width: 100%; height: auto;
+	padding: 30px 25px; margin-bottom: 30px;
+	border: 1px solid #ddd;
+}
+.view_tour .info_group h4 {
+	font-size: 24px; font-weight: 600; line-height: 1;
+	padding-bottom: 20px;
+	color: #111; 
+	border-bottom: 2px solid #111;
+}
+.view_tour .view_tit {
+	padding: 10px 5px;
+	border-bottom: 1px solid #ddd;
+}
+.view_tour .view_tit li {
+	display: inline-block; margin-right: 25px;
+}
+.view_tour .view_tit li.info_like {
+	float: right; margin-right: 0;
+}
+.view_tour .view_tit li strong {
+	padding-right: 5px; font-size: 16px; color: #333;
+}
+.view_tour .view_tit li strong i {
+	vertical-align: top; color: #ccc; font-size: 16px; line-height: 28px;
+}
+.view_tour .view_tit li p {
+	display: inline-block; position: relative;
+	padding-left: 6px; font-size: 16px; font-weight: 300;
+}
+
+.view_tour .view_tit li p::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 1px;
+    height: 13px;
+    background-color: #e0e0e0;
+}
+
+.view_tour .info_group .view_txt {
+	width: 100%; padding: 15px 5px 0px;
+}
+.view_tour .info_group .view_txt p {
+	word-break: keep-all; font-size: 15px; line-height: 1.6;
+}
+
+.view_tour .map_group {
+	width: 810px; height: 994px;
+	border-bottom: 1px solid #ddd;
+}
+
+
+/* sub_menu ============================================== */
+.sub_menu {
+	margin-bottom: 20px;
+}
+
+.sub_menu ul {
+	display: flex; justify-content: center;
+	margin: 0 auto; border-radius: 10px; overflow: hidden;
+}
+
+.sub_menu ul li {
+	background: #fff;
+}
+
+.sub_menu ul li:first-child {border-radius: 10px 0 0 10px;}
+.sub_menu ul li:last-child {border-radius: 0 10px 10px 0;}
+
+.sub_menu ul li a {
+	display: inline-block; width: 120px;
+	padding: 10px; color: #594646;
+	font-size: 15px; text-align: center;
+}
+
+.sub_menu ul li.on a {
+	background: #462f2f; color: #fff;
+	border-radius: 10px;
+}
+
+
+
+
+
+
+#tourinfo_warp {
+	position: fixed; top: 0; left: 0; z-index: 500;
+	width: 100%; height: 100%;
+	display: none; justify-content: center; align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
+#tourinfo_warp.on {
+	display: flex; 
+}
+
+#tourinfo_box {
+	position: absolute;
+}
+
+#tourinfo_con {
+	width: 440px; height: 880px;
+	text-align: left; overflow-y: auto;
+}
+/* 스크롤바 */
+#tourinfo_con::-webkit-scrollbar { width: 6px;}
+#tourinfo_con::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 10px; }
+#tourinfo_con::-webkit-scrollbar-track { width: 6px; background-color: #eee;}
+
+
+
+#tourinfo_warp #btn_close {
+	position: absolute; top: 0; right: -40px; 
+	display: inline-block; width: 40px; height: 42px; font-size: 20px;
+	border-radius: 0 10px 10px 0; background: #fff;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 5px 0px;
+}
+#tourinfo_warp #btn_close i {font-size: 24px; line-height: 2; color: #888;}
+
+
+
+
+
+/* swiper */
+.swiper {
+	width: 100%; height: 100%;
+}
+
+.swiper-slide {
+	text-align: center; font-size: 18px;
+	background: #fff;
+	justify-content: center; align-items: center;
+}
+
+#main .swiper-button-next,
+#main .swiper-button-prev {
+	width: 40px; height: 68px;
+	margin-top: 0;
+	color: #fff;
+}
+
+#main .swiper-button-next::after,
+#main .swiper-button-prev::after {
+	font-size: 18px; font-weight: 600;
+}
+

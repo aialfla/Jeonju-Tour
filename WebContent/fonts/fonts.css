@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+
+@font-face {
+	font-family:'Jalnan';
+	font-style:normal;
+	font-weight:400;
+	src:url('JalnanOTF.otf') format('opentype');
+}
+
+@font-face {
+	font-family:'Noto Sans Korean';
+	font-style:normal;
+	font-weight:300;
+	src:url('NotoSansKR-Light.eot'), 
+	url('NotoSansKR-Light.eot?#iefix') format('embedded-opentype'), 
+	url('NotoSansKR-Light.woff') format('woff'), 
+	url('NotoSansKR-Light.otf') format('opentype');
+}
+@font-face {
+	font-family:'Noto Sans Korean';
+	font-style:normal;
+	font-weight:350;
+	src: local('Noto Sans DemiLight'), local('NotoSans-DemiLight'), 
+	url('NotoSansKR-DemiLight.eot'), 
+	url('NotoSansKR-DemiLight.eot?#iefix') format('embedded-opentype'), 
+	url('NotoSansKR-DemiLight.woff') format('woff'), 
+	url('NotoSansKR-DemiLight.otf') format('opentype');
+}
+@font-face {
+	font-family:'Noto Sans Korean';
+	font-style:normal;
+	font-weight:400;
+	src:url('NotoSansKR-Regular.eot'), 
+	url('NotoSansKR-Regular.eot?#iefix') format('embedded-opentype'), 
+	url('NotoSansKR-Regular.woff') format('woff'), 
+	url('NotoSansKR-Regular.otf') format('opentype');
+}
+@font-face {
+	font-family:'Noto Sans Korean';
+	font-style:normal;
+	font-weight:500;
+	src:url('NotoSansKR-Medium.eot'), 
+	url('NotoSansKR-Medium.eot?#iefix') format('embedded-opentype'), 
+	url('NotoSansKR-Medium.woff') format('woff'), 
+	url('NotoSansKR-Medium.otf') format('opentype');
+}
+
+@font-face {
+	font-family:'Noto Sans Korean';
+	font-style:normal;
+	font-weight:600;
+	src:url('NotoSansKR-Bold.eot'), 
+	url('NotoSansKR-Bold.eot?#iefix') format('embedded-opentype'), 
+	url('NotoSansKR-Bold.woff') format('woff'), 
+	url('NotoSansKR-Bold.otf') format('opentype');
+}
+
+@font-face {
+	font-family:'Noto Sans Korean';
+	font-style:normal;
+	font-weight:900;
+	src:url('NotoSansKR-Black.eot'), 
+	url('NotoSansKR-Black.eot?#iefix') format('embedded-opentype'), 
+	url('NotoSansKR-Black.woff') format('woff'), 
+	url('NotoSansKR-Black.otf') format('opentype');
+}
